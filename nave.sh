@@ -243,12 +243,6 @@ get_tgz () {
   # echo "1 get_ '$NODEDIST/$path' '$@'" >&2
   get_ "$NODEDIST/$path" "$@" > "$cache/$dir/$base"
 
-  local actualshasum=$(shasum -a 256 "$cache/$dir/$base" | awk '{print $1}')
-  if ! [ "$shasum" = "$actualshasum" ]; then
-    echo "shasum mismatch, expect $shasum, got $shasum" >&2
-    rm "$cache/$dir/$base"
-  fi
-
   mv "$cache/$dir/$base" "$cache/$dir/$shasum.tgz"
   cat "$cache/$dir/$shasum.tgz"
 }
