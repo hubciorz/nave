@@ -247,7 +247,6 @@ get_tgz () {
   if ! [ "$shasum" = "$actualshasum" ]; then
     echo "shasum mismatch, expect $shasum, got $shasum" >&2
     rm "$cache/$dir/$base"
-    return 1
   fi
 
   mv "$cache/$dir/$base" "$cache/$dir/$shasum.tgz"
